@@ -24,4 +24,22 @@ jobs:
 
       - name: Use output from previous step
         run: |
+          
           echo "The Python script returned: ${{ steps.run_script.outputs.script_output }}"
+      
+
+      - name: convert json array to bash array
+          
+        run: |
+          TARGET=${{ steps.run_script.outputs.script_output }}
+          BASH_ARRAY=($(echo "$TARGET" | jq -r '.[]'))
+          
+                    if [[ -n "$TARGET" ]]; then
+              echo "Bash array elements:"
+              for item in "${BASH_ARRAY[@]}"; do
+                  echo "Item: $item"
+              done
+          else
+              echo "No data in TARGET"
+          fi
+          
