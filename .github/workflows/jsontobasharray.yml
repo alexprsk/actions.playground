@@ -1,0 +1,27 @@
+name: Run Python and Capture Output
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-python:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Python script and capture output
+        id: run_script
+        run: |
+          output=$(python3 your_script.py)
+          echo "script_output=${output}" >> $GITHUB_OUTPUT
+
+      - name: Use output from previous step
+        run: |
+          echo "The Python script returned: ${{ steps.run_script.outputs.script_output }}"
