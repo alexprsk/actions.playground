@@ -19,7 +19,7 @@ jobs:
       - name: Run Python script and capture output
         id: run_script
         run: |
-          output=$(python3 your_script.py)
+          output=$(python3 ./scripts/python_script.py)
           echo "script_output=${output}" >> $GITHUB_OUTPUT
 
       - name: Use output from previous step
