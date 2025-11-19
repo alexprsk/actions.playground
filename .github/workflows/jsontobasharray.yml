@@ -34,7 +34,7 @@ jobs:
       - name: convert json array to bash array
           
         run: |
-          TARGET=${{ steps.run_script.outputs.script_output }}
+          TARGET='${{ steps.run_script.outputs.script_output }}'
           BASH_ARRAY=($(echo "$TARGET" | jq -r '.[]'))
           
                     if [[ -n "$TARGET" ]]; then
