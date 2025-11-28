@@ -1,0 +1,16 @@
+name: Matrix Max Parallel Example
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 0       # limit how many matrix jobs run at once
+      matrix:
+        python-version: [3.9, 3.10, 3.11]
+
+    steps:
+      - name: Show Python version
+        run: echo "Running on Python version: ${{ matrix.python-version }}"
