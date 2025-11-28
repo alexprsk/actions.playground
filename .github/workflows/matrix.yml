@@ -14,4 +14,5 @@ jobs:
 
     steps:
       - name: Echo item
-        run: echo "Matrix item: ${{ matrix.item }}"
+        run: |
+          echo "Matrix item: ${{ matrix.item }}"
