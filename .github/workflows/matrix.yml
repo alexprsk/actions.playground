@@ -1,0 +1,17 @@
+name: Matrix Max Parallel
+
+on:
+  workflow_dispatch:
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+
+    strategy:
+      max-parallel: 2
+      matrix:
+        item: [a, b, c]
+
+    steps:
+      - name: Echo item
+        run: echo "Matrix item: ${{ matrix.item }}"
